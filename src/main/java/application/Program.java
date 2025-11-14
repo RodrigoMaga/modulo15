@@ -11,7 +11,7 @@ public class Program {
 
     public static void main(String[] args) {
 
-        File file = new File("c:\\temp\\in .txt");
+        File file = new File("c:\\temp\\in.txt");
 
         try (Scanner sc = new Scanner(file)) {
             while (sc.hasNextLine())
