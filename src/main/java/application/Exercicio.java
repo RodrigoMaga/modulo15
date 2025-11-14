@@ -29,7 +29,7 @@ public class Exercicio {
                 line = br.readLine();
             }
 
-            try (BufferedWriter bw = new BufferedWriter(new FileWriter(path + "\\out\\summary.csv", true))){
+            try (BufferedWriter bw = new BufferedWriter(new FileWriter(path + "\\out\\summary.csv", false))){
                 for (Product p : productList) {
                     bw.write(p.toString());
                     bw.newLine();
