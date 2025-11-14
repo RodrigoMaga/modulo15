@@ -35,11 +35,11 @@ public class Exercicio {
                     bw.newLine();
                 }
             } catch (IOException e) {
-                throw new RuntimeException(e);
+                System.out.println("Writing Error: " + e.getMessage());
             }
 
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            System.out.println("Reading Error: " + e.getMessage());;
         }
     }
 }
