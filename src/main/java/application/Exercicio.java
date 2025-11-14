@@ -6,7 +6,6 @@ import entities.Product;
 
 import java.io.*;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
 
@@ -19,7 +18,7 @@ public class Exercicio {
         String path = "c:\\temp\\subdir";
         List<Product> productList = new ArrayList<>();
 
-        File file = new File(path);
+        boolean success = new File(path + "\\out").mkdir();
 
         try (BufferedReader br = new BufferedReader(new FileReader(path + "\\source.csv"))) {
             String line = br.readLine();
@@ -29,18 +28,16 @@ public class Exercicio {
                 productList.add(new Product(productAttributes[0], Double.valueOf(productAttributes[1]), Integer.valueOf(productAttributes[2])));
                 line = br.readLine();
             }
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
 
-        boolean success = new File(path + "\\out").mkdir();
-        System.out.println("Criado " + success);
-
-        try (BufferedWriter bw = new BufferedWriter(new FileWriter(path + "\\out\\summary.csv", true))){
-            for (Product p : productList) {
-                bw.write(p.toString());
-                bw.newLine();
+            try (BufferedWriter bw = new BufferedWriter(new FileWriter(path + "\\out\\summary.csv", true))){
+                for (Product p : productList) {
+                    bw.write(p.toString());
+                    bw.newLine();
+                }
+            } catch (IOException e) {
+                throw new RuntimeException(e);
             }
+
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
